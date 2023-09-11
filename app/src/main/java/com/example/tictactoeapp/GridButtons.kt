@@ -5,46 +5,53 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 
 
 @Composable
-fun GameGrid() {
-    Column {
-        Row {
-            Button(
-                onClick = { /*TODO*/ }) {
-                Text(text = "Column 1")
-            }
-            Button(
-                onClick = { /*TODO*/ }) {
-                Text(text = "Column 2")
+fun GridButtons(button1:String,onButton1Change: (String) -> Unit) {
 
+    var buttonText2 by remember { mutableStateOf("") }
+    var buttonText3 by remember { mutableStateOf("") }
+
+    Column{
+        Row{
+            Button(
+                onClick =  {onButton1Change("X")}) {
+                Text(text = button1)
             }
             Button(
-                onClick = { /*TODO*/ }) {
-                Text(text = "Column 3")
+                onClick = { buttonText2 = "x"}) {
+                Text(text = buttonText2)
+            }
+            Button(
+                onClick = { buttonText3 = "x"}) {
+                Text(text = buttonText3)
             }
         }
         Row {
             Button(onClick = { /*TODO*/ }) {
-                Text(text = "Column 4")
+                Text(text = "")
             }
             Button(onClick = { /*TODO*/ }) {
-                Text(text = "Column 5")
+                Text(text = "")
             }
             Button(onClick = { /*TODO*/ }) {
-                Text(text = "Column 6")
+                Text(text = "")
             }
         }
         Row {
             Button(onClick = { /*TODO*/ }) {
-                Text(text = "Column 7")
+                Text(text = "")
             }
             Button(onClick = { /*TODO*/ }) {
-                Text(text = "Column 8")
+                Text(text = "")
             }
             Button(onClick = { /*TODO*/ }) {
-                Text(text = "Column 9")
+                Text(text = "")
             }
         }
     }
