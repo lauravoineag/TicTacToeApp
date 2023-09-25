@@ -23,16 +23,19 @@ fun Game() {
         DisplayPlayerTurn(playerTurn)
         GridButtons(buttonText1,
             onButton1Change = {
+                if (buttonText1 == "") {
                 buttonText1 = playerTurn
-                checkPlayerTurn()
+                checkPlayerTurn()}
             },
             buttonText2, onButton2Change = {
+                if (buttonText2 == ""){
                 buttonText2 = playerTurn
-                checkPlayerTurn()
+                checkPlayerTurn()}
             },
             buttonText3, onButton3Change = {
+                if (buttonText3 == ""){
                 buttonText3 = playerTurn
-                checkPlayerTurn()
+                checkPlayerTurn()}
             }
         )
         StartGameButton()
