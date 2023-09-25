@@ -5,31 +5,27 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+
 
 
 @Composable
-fun GridButtons(button1:String,onButton1Change: (String) -> Unit) {
-
-    var buttonText2 by remember { mutableStateOf("") }
-    var buttonText3 by remember { mutableStateOf("") }
+fun GridButtons(button1:String,onButton1Change: (String) -> Unit,
+                button2:String, onButton2Change: (String) -> Unit,
+                button3:String, onButton3Change: (String) -> Unit) {
 
     Column{
         Row{
             Button(
-                onClick =  {onButton1Change("X")}) {
+                onClick =  {onButton1Change("x")}) {
                 Text(text = button1)
             }
             Button(
-                onClick = { buttonText2 = "x"}) {
-                Text(text = buttonText2)
+                onClick = { onButton2Change("x")}) {
+                Text(text = button2)
             }
             Button(
-                onClick = { buttonText3 = "x"}) {
-                Text(text = buttonText3)
+                onClick = { onButton3Change("x")}) {
+                Text(text = button3)
             }
         }
         Row {
