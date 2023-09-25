@@ -9,29 +9,32 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 
 @Composable
-fun Game()
-{
+fun Game() {
     var buttonText1 by remember { mutableStateOf("") }
     var buttonText2 by remember { mutableStateOf("") }
     var buttonText3 by remember { mutableStateOf("") }
-    var playerTurn by remember { mutableStateOf("") }
+    var playerTurn by remember { mutableStateOf("X") }
+
+    fun checkPlayerTurn() {
+        playerTurn = if (playerTurn == "X") {"O"} else "X"
+    }
 
     Column {
         DisplayPlayerTurn(playerTurn)
         GridButtons(buttonText1,
             onButton1Change = {
-                buttonText1 = it
-                playerTurn = "O"
-        },
-            buttonText2, onButton2Change = {
-                buttonText2 = it
-                playerTurn = "X"
+                buttonText1 = playerTurn
+                checkPlayerTurn()
             },
-            buttonText3, onButton3Change =  {
-                buttonText3 = it
-                playerTurn = "O"
+            buttonText2, onButton2Change = {
+                buttonText2 = playerTurn
+                checkPlayerTurn()
+            },
+            buttonText3, onButton3Change = {
+                buttonText3 = playerTurn
+                checkPlayerTurn()
             }
-            )
+        )
         StartGameButton()
     }
 }

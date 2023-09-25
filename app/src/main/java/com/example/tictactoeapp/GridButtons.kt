@@ -9,22 +9,22 @@ import androidx.compose.runtime.Composable
 
 
 @Composable
-fun GridButtons(button1:String,onButton1Change: (String) -> Unit,
-                button2:String, onButton2Change: (String) -> Unit,
-                button3:String, onButton3Change: (String) -> Unit) {
+fun GridButtons(button1:String,onButton1Change: () -> Unit,
+                button2:String, onButton2Change: () -> Unit,
+                button3:String, onButton3Change: () -> Unit) {
 
     Column{
         Row{
             Button(
-                onClick =  {onButton1Change("x")}) {
+                onClick =  {onButton1Change()}) {
                 Text(text = button1)
             }
             Button(
-                onClick = { onButton2Change("x")}) {
+                onClick = { onButton2Change()}) {
                 Text(text = button2)
             }
             Button(
-                onClick = { onButton3Change("x")}) {
+                onClick = { onButton3Change()}) {
                 Text(text = button3)
             }
         }
