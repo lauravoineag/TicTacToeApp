@@ -20,9 +20,14 @@ fun Game() {
     var buttonText8 by remember { mutableStateOf("") }
     var buttonText9 by remember { mutableStateOf("") }
     var playerTurn by remember { mutableStateOf("X") }
+    var playerWin by remember { mutableStateOf("") }
 
     fun checkPlayerTurn() {
         playerTurn = if (playerTurn == "X") {"O"} else "X"
+    }
+
+    fun checkWin(player:String):Boolean{
+        return player == buttonText1 && player == buttonText2 && player == buttonText3
     }
 
     fun startGame(){
@@ -39,22 +44,28 @@ fun Game() {
     }
 
     Column {
-        DisplayPlayerTurn(playerTurn)
+        DisplayPlayerTurn(playerTurn,playerWin)
         GridButtons(buttonText1,
             onButton1Change = {
                 if (buttonText1 == "") {
-                buttonText1 = playerTurn
-                checkPlayerTurn()}
+                    buttonText1 = playerTurn
+                    if (checkWin(playerTurn)) { playerWin = "$playerTurn won" }
+                    checkPlayerTurn()
+                }
             },
             buttonText2, onButton2Change = {
-                if (buttonText2 == ""){
-                buttonText2 = playerTurn
-                checkPlayerTurn()}
+                if (buttonText2 == "") {
+                    buttonText2 = playerTurn
+                    if (checkWin(playerTurn)) { playerWin = "$playerTurn won" }
+                    checkPlayerTurn()
+                }
             },
             buttonText3, onButton3Change = {
-                if (buttonText3 == ""){
-                buttonText3 = playerTurn
-                checkPlayerTurn()}
+                if (buttonText3 == "") {
+                    buttonText3 = playerTurn
+                    if (checkWin(playerTurn)) { playerWin = "$playerTurn won"}
+                    checkPlayerTurn()
+                }
             },
             buttonText4, onButton4Change = {
                 if (buttonText4 == ""){
