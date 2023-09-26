@@ -9,13 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun StartGameButton() {
+fun StartGameButton(startGame:()-> Unit) {
     Button(
         modifier = Modifier
         .fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(containerColor = Color.Green, contentColor = Color.Black),
-        onClick = { /*TODO*/ }) {
+        onClick = { startGame() }) {
         Text(text = "Start Game")
-
     }
 }
