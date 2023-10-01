@@ -3,22 +3,24 @@ package com.example.tictactoeapp
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 
+
 @Composable
 fun Game() {
-    var buttonText1 by remember { mutableStateOf("") }
-    var buttonText2 by remember { mutableStateOf("") }
-    var buttonText3 by remember { mutableStateOf("") }
-    var buttonText4 by remember { mutableStateOf("") }
-    var buttonText5 by remember { mutableStateOf("") }
-    var buttonText6 by remember { mutableStateOf("") }
-    var buttonText7 by remember { mutableStateOf("") }
-    var buttonText8 by remember { mutableStateOf("") }
-    var buttonText9 by remember { mutableStateOf("") }
+    var buttonText1: MutableState<String> = remember { mutableStateOf("") }
+    var buttonText2: MutableState<String> = remember { mutableStateOf("") }
+    var buttonText3: MutableState<String> = remember { mutableStateOf("") }
+    var buttonText4: MutableState<String> = remember { mutableStateOf("") }
+    var buttonText5: MutableState<String> = remember { mutableStateOf("") }
+    var buttonText6: MutableState<String> = remember { mutableStateOf("") }
+    var buttonText7: MutableState<String> = remember { mutableStateOf("") }
+    var buttonText8: MutableState<String> = remember { mutableStateOf("") }
+    var buttonText9: MutableState<String> = remember { mutableStateOf("") }
     var playerTurn by remember { mutableStateOf("X") }
     var playerWin by remember { mutableStateOf("") }
 
@@ -27,78 +29,42 @@ fun Game() {
     }
 
     fun checkWin(player:String):Boolean{
-        return player == buttonText1 && player == buttonText2 && player == buttonText3
+        return player == buttonText1.value && player == buttonText2.value && player == buttonText3.value
     }
 
+    fun playerTakesTurn(buttonText: MutableState<String>){
+        if (buttonText.value == "" && playerWin == ""){
+            buttonText.value = playerTurn
+        if (checkWin(playerTurn)) { playerWin = "$playerTurn won" }
+        else checkPlayerTurn()
+    }}
+
     fun startGame(){
-        buttonText1 = ""
-        buttonText2 = ""
-        buttonText3 = ""
-        buttonText4 = ""
-        buttonText5 = ""
-        buttonText6 = ""
-        buttonText7 = ""
-        buttonText8 = ""
-        buttonText9 = ""
+        buttonText1.value = ""
+        buttonText2.value = ""
+        buttonText3.value = ""
+        buttonText4.value = ""
+        buttonText5.value = ""
+        buttonText6.value = ""
+        buttonText7.value = ""
+        buttonText8.value = ""
+        buttonText9.value = ""
         playerTurn = "X"
         playerWin = ""
     }
 
     Column {
         DisplayPlayerTurn(playerTurn,playerWin)
-        GridButtons(buttonText1,
-            onButton1Change = {
-                if (buttonText1 == "" && playerWin == ""){
-                    buttonText1 = playerTurn
-                    if (checkWin(playerTurn)) { playerWin = "$playerTurn won" }
-                    else checkPlayerTurn()
-                }
-            },
-            buttonText2, onButton2Change = {
-                if (buttonText2 == ""&& playerWin == "") {
-                    buttonText2 = playerTurn
-                    if (checkWin(playerTurn)) { playerWin = "$playerTurn won" }
-                    else checkPlayerTurn()
-                }
-            },
-            buttonText3, onButton3Change = {
-                if (buttonText3 == ""&& playerWin == "") {
-                    buttonText3 = playerTurn
-                    if (checkWin(playerTurn)) { playerWin = "$playerTurn won"}
-                    else checkPlayerTurn()
-                }
-            },
-            buttonText4, onButton4Change = {
-                if (buttonText4 == ""&& playerWin == ""){
-                    buttonText4 = playerTurn
-                    checkPlayerTurn()}
-            },
-            buttonText5, onButton5Change = {
-                if (buttonText5 == ""&& playerWin == ""){
-                    buttonText5 = playerTurn
-                    checkPlayerTurn()}
-            },
-            buttonText6, onButton6Change = {
-                if (buttonText6 == ""&& playerWin == ""){
-                    buttonText6 = playerTurn
-                    checkPlayerTurn()}
-            },
-            buttonText7, onButton7Change = {
-                if (buttonText7 == ""&& playerWin == ""){
-                    buttonText7 = playerTurn
-                    checkPlayerTurn()}
-            },
-            buttonText8, onButton8Change = {
-                if (buttonText8 == ""&& playerWin == ""){
-                    buttonText8 = playerTurn
-                    checkPlayerTurn()}
-            },
-            buttonText9, onButton9Change = {
-                if (buttonText9 == ""&& playerWin == ""){
-                    buttonText9 = playerTurn
-                    checkPlayerTurn()}
-            }
-
+        GridButtons(
+            buttonText1.value, onButton1Change = { playerTakesTurn(buttonText1) },
+            buttonText2.value, onButton2Change = { playerTakesTurn(buttonText2) },
+            buttonText3.value, onButton3Change = { playerTakesTurn(buttonText3) },
+            buttonText4.value, onButton4Change = { playerTakesTurn(buttonText4) },
+            buttonText5.value, onButton5Change = { playerTakesTurn(buttonText5) },
+            buttonText6.value, onButton6Change = { playerTakesTurn(buttonText6) },
+            buttonText7.value, onButton7Change = { playerTakesTurn(buttonText7) },
+            buttonText8.value, onButton8Change = { playerTakesTurn(buttonText8) },
+            buttonText9.value, onButton9Change = { playerTakesTurn(buttonText9) }
         )
         StartGameButton(::startGame)
     }
