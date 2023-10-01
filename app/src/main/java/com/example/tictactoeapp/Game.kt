@@ -41,59 +41,60 @@ fun Game() {
         buttonText8 = ""
         buttonText9 = ""
         playerTurn = "X"
+        playerWin = ""
     }
 
     Column {
         DisplayPlayerTurn(playerTurn,playerWin)
         GridButtons(buttonText1,
             onButton1Change = {
-                if (buttonText1 == "") {
+                if (buttonText1 == "" && playerWin == ""){
                     buttonText1 = playerTurn
                     if (checkWin(playerTurn)) { playerWin = "$playerTurn won" }
-                    checkPlayerTurn()
+                    else checkPlayerTurn()
                 }
             },
             buttonText2, onButton2Change = {
-                if (buttonText2 == "") {
+                if (buttonText2 == ""&& playerWin == "") {
                     buttonText2 = playerTurn
                     if (checkWin(playerTurn)) { playerWin = "$playerTurn won" }
-                    checkPlayerTurn()
+                    else checkPlayerTurn()
                 }
             },
             buttonText3, onButton3Change = {
-                if (buttonText3 == "") {
+                if (buttonText3 == ""&& playerWin == "") {
                     buttonText3 = playerTurn
                     if (checkWin(playerTurn)) { playerWin = "$playerTurn won"}
-                    checkPlayerTurn()
+                    else checkPlayerTurn()
                 }
             },
             buttonText4, onButton4Change = {
-                if (buttonText4 == ""){
+                if (buttonText4 == ""&& playerWin == ""){
                     buttonText4 = playerTurn
                     checkPlayerTurn()}
             },
             buttonText5, onButton5Change = {
-                if (buttonText5 == ""){
+                if (buttonText5 == ""&& playerWin == ""){
                     buttonText5 = playerTurn
                     checkPlayerTurn()}
             },
             buttonText6, onButton6Change = {
-                if (buttonText6 == ""){
+                if (buttonText6 == ""&& playerWin == ""){
                     buttonText6 = playerTurn
                     checkPlayerTurn()}
             },
             buttonText7, onButton7Change = {
-                if (buttonText7 == ""){
+                if (buttonText7 == ""&& playerWin == ""){
                     buttonText7 = playerTurn
                     checkPlayerTurn()}
             },
             buttonText8, onButton8Change = {
-                if (buttonText8 == ""){
+                if (buttonText8 == ""&& playerWin == ""){
                     buttonText8 = playerTurn
                     checkPlayerTurn()}
             },
             buttonText9, onButton9Change = {
-                if (buttonText9 == ""){
+                if (buttonText9 == ""&& playerWin == ""){
                     buttonText9 = playerTurn
                     checkPlayerTurn()}
             }
