@@ -28,6 +28,12 @@ fun Game() {
         playerTurn = if (playerTurn == "X") {"O"} else "X"
     }
 
+    fun allButtonsClicked(): Boolean {
+        return (buttonText1.value != "" && buttonText2.value != "" && buttonText3.value != "" &&
+                buttonText4.value != "" && buttonText5.value != "" && buttonText6.value != "" &&
+                buttonText7.value != "" && buttonText8.value != "" && buttonText9.value != "")
+    }
+
     fun checkWin(player: String): Boolean {
         return (player == buttonText1.value && player == buttonText2.value && player == buttonText3.value) ||
                 (player == buttonText4.value && player == buttonText5.value && player == buttonText6.value) ||
@@ -43,6 +49,7 @@ fun Game() {
         if (buttonText.value == "" && playerWin == ""){
             buttonText.value = playerTurn
         if (checkWin(playerTurn)) { playerWin = "$playerTurn won" }
+        else if (allButtonsClicked()) {playerWin = ":( nobody won"}
         else checkPlayerTurn()
     }}
 
@@ -76,3 +83,4 @@ fun Game() {
         StartGameButton(::startGame)
     }
 }
+
