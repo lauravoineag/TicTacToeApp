@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-
 @Composable
 fun GridButtons(
     button1: String, onButton1Change: () -> Unit,
@@ -18,7 +17,7 @@ fun GridButtons(
     button8: String, onButton8Change: () -> Unit,
     button9: String, onButton9Change: () -> Unit
 ) {
-    Column {
+    Column{
         Row {
             Button(onClick = { onButton1Change() }) {
                 Text(text = button1)

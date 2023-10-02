@@ -12,15 +12,15 @@ import androidx.compose.runtime.setValue
 
 @Composable
 fun Game() {
-    var buttonText1: MutableState<String> = remember { mutableStateOf("") }
-    var buttonText2: MutableState<String> = remember { mutableStateOf("") }
-    var buttonText3: MutableState<String> = remember { mutableStateOf("") }
-    var buttonText4: MutableState<String> = remember { mutableStateOf("") }
-    var buttonText5: MutableState<String> = remember { mutableStateOf("") }
-    var buttonText6: MutableState<String> = remember { mutableStateOf("") }
-    var buttonText7: MutableState<String> = remember { mutableStateOf("") }
-    var buttonText8: MutableState<String> = remember { mutableStateOf("") }
-    var buttonText9: MutableState<String> = remember { mutableStateOf("") }
+    val buttonText1: MutableState<String> = remember { mutableStateOf("") }
+    val buttonText2: MutableState<String> = remember { mutableStateOf("") }
+    val buttonText3: MutableState<String> = remember { mutableStateOf("") }
+    val buttonText4: MutableState<String> = remember { mutableStateOf("") }
+    val buttonText5: MutableState<String> = remember { mutableStateOf("") }
+    val buttonText6: MutableState<String> = remember { mutableStateOf("") }
+    val buttonText7: MutableState<String> = remember { mutableStateOf("") }
+    val buttonText8: MutableState<String> = remember { mutableStateOf("") }
+    val buttonText9: MutableState<String> = remember { mutableStateOf("") }
     var playerTurn by remember { mutableStateOf("X") }
     var playerWin by remember { mutableStateOf("") }
 
@@ -28,8 +28,15 @@ fun Game() {
         playerTurn = if (playerTurn == "X") {"O"} else "X"
     }
 
-    fun checkWin(player:String):Boolean{
-        return player == buttonText1.value && player == buttonText2.value && player == buttonText3.value
+    fun checkWin(player: String): Boolean {
+        return (player == buttonText1.value && player == buttonText2.value && player == buttonText3.value) ||
+                (player == buttonText4.value && player == buttonText5.value && player == buttonText6.value) ||
+                (player == buttonText7.value && player == buttonText8.value && player == buttonText9.value) ||
+                (player == buttonText1.value && player == buttonText5.value && player == buttonText9.value) ||
+                (player == buttonText3.value && player == buttonText5.value && player == buttonText7.value) ||
+                (player == buttonText1.value && player == buttonText4.value && player == buttonText7.value) ||
+                (player == buttonText2.value && player == buttonText5.value && player == buttonText8.value) ||
+                (player == buttonText3.value && player == buttonText6.value && player == buttonText9.value)
     }
 
     fun playerTakesTurn(buttonText: MutableState<String>){
