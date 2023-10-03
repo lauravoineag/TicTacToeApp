@@ -27,21 +27,19 @@ fun Game() {
     var playerWin by remember { mutableStateOf("") }
 
     val allButtons = listOf(
-        buttonText1, buttonText2,
-        buttonText3, buttonText4,
-        buttonText5, buttonText6,
+        buttonText1, buttonText2, buttonText3,
+        buttonText4, buttonText5, buttonText6,
         buttonText7, buttonText8, buttonText9
     )
 
     fun checkPlayerTurn() {
-        playerTurn = if (playerTurn == "X") {"O"} else "X"
-    }
+        playerTurn = if (playerTurn == "X") {"O"} else "X" }
 
-    fun allButtonsClicked(): Boolean { return allButtons.all { it.value != "" } }
+    fun allButtonsClicked(): Boolean {
+        return allButtons.all { it.value != "" } }
 
     fun pickRandomButton(): MutableState<String> {
-        return allButtons.filter { it.value == "" }.random()
-    }
+        return allButtons.filter { it.value == "" }.random() }
 
     fun checkWin(player: String): Boolean {
         return (player == buttonText1.value && player == buttonText2.value && player == buttonText3.value) ||
