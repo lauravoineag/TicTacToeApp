@@ -24,23 +24,22 @@ fun Game() {
     var playerTurn by remember { mutableStateOf("X") }
     var playerWin by remember { mutableStateOf("") }
 
+
+    var allButtons = listOf(
+        buttonText1, buttonText2,
+        buttonText3, buttonText4,
+        buttonText5, buttonText6,
+        buttonText7, buttonText8, buttonText9
+    )
+
     fun checkPlayerTurn() {
         playerTurn = if (playerTurn == "X") {"O"} else "X"
     }
 
-    fun allButtonsClicked(): Boolean {
-        return (buttonText1.value != "" && buttonText2.value != "" && buttonText3.value != "" &&
-                buttonText4.value != "" && buttonText5.value != "" && buttonText6.value != "" &&
-                buttonText7.value != "" && buttonText8.value != "" && buttonText9.value != "")
-    }
+    fun allButtonsClicked(): Boolean { return allButtons.all { it.value != "" } }
 
     fun pickRandomButton(): MutableState<String> {
-        return listOf(
-            buttonText1, buttonText2,
-            buttonText3, buttonText4,
-            buttonText5, buttonText6,
-            buttonText7, buttonText8, buttonText9
-        ).filter { it.value == "" }.random()
+        return allButtons.filter { it.value == "" }.random()
     }
 
     fun checkWin(player: String): Boolean {
@@ -71,16 +70,8 @@ fun Game() {
         }
     }
 
-    fun startGame(){
-        buttonText1.value = ""
-        buttonText2.value = ""
-        buttonText3.value = ""
-        buttonText4.value = ""
-        buttonText5.value = ""
-        buttonText6.value = ""
-        buttonText7.value = ""
-        buttonText8.value = ""
-        buttonText9.value = ""
+    fun startGame() {
+        allButtons.forEach { it.value = "" }
         playerTurn = "X"
         playerWin = ""
     }
