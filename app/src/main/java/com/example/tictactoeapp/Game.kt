@@ -34,6 +34,18 @@ fun Game() {
                 buttonText7.value != "" && buttonText8.value != "" && buttonText9.value != "")
     }
 
+    fun pickRandomButton():MutableState<String>{
+        if(buttonText1.value == "") return buttonText1
+        if(buttonText2.value == "") return buttonText2
+        if(buttonText3.value == "") return buttonText3
+        if(buttonText4.value == "") return buttonText4
+        if(buttonText5.value == "") return buttonText5
+        if(buttonText6.value == "") return buttonText6
+        if(buttonText7.value == "") return buttonText7
+        if(buttonText8.value == "") return buttonText8
+        return buttonText9
+    }
+
     fun checkWin(player: String): Boolean {
         return (player == buttonText1.value && player == buttonText2.value && player == buttonText3.value) ||
                 (player == buttonText4.value && player == buttonText5.value && player == buttonText6.value) ||
@@ -45,13 +57,22 @@ fun Game() {
                 (player == buttonText3.value && player == buttonText6.value && player == buttonText9.value)
     }
 
-    fun playerTakesTurn(buttonText: MutableState<String>){
-        if (buttonText.value == "" && playerWin == ""){
+    fun playerTakesTurn(buttonText: MutableState<String>, humanTurn: Boolean = true) {
+        if (buttonText.value == "" && playerWin == "") {
             buttonText.value = playerTurn
-        if (checkWin(playerTurn)) { playerWin = "$playerTurn won" }
-        else if (allButtonsClicked()) {playerWin = ":( nobody won"}
-        else checkPlayerTurn()
-    }}
+            if (checkWin(playerTurn)) {
+                playerWin = "$playerTurn won"
+            } else if (allButtonsClicked()) {
+                playerWin = ":( nobody won"
+            } else {
+                checkPlayerTurn()
+                if (humanTurn) {
+                    val randomPick = pickRandomButton()
+                    playerTakesTurn(randomPick, humanTurn = false)
+                }
+            }
+        }
+    }
 
     fun startGame(){
         buttonText1.value = ""
@@ -83,4 +104,5 @@ fun Game() {
         StartGameButton(::startGame)
     }
 }
+
 
