@@ -26,8 +26,7 @@ fun Game() {
     var playerTurn by remember { mutableStateOf("X") }
     var playerWin by remember { mutableStateOf("") }
 
-
-    var allButtons = listOf(
+    val allButtons = listOf(
         buttonText1, buttonText2,
         buttonText3, buttonText4,
         buttonText5, buttonText6,
