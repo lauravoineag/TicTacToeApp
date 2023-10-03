@@ -8,6 +8,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import java.util.Timer
+import kotlin.concurrent.schedule
 
 
 @Composable
@@ -64,7 +66,8 @@ fun Game() {
                 checkPlayerTurn()
                 if (humanTurn) {
                     val randomPick = pickRandomButton()
-                    playerTakesTurn(randomPick, humanTurn = false)
+                    Timer().schedule(1000){
+                    playerTakesTurn(randomPick, humanTurn = false)}
                 }
             }
         }
