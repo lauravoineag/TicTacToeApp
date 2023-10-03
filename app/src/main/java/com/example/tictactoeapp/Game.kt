@@ -34,16 +34,13 @@ fun Game() {
                 buttonText7.value != "" && buttonText8.value != "" && buttonText9.value != "")
     }
 
-    fun pickRandomButton():MutableState<String>{
-        if(buttonText1.value == "") return buttonText1
-        if(buttonText2.value == "") return buttonText2
-        if(buttonText3.value == "") return buttonText3
-        if(buttonText4.value == "") return buttonText4
-        if(buttonText5.value == "") return buttonText5
-        if(buttonText6.value == "") return buttonText6
-        if(buttonText7.value == "") return buttonText7
-        if(buttonText8.value == "") return buttonText8
-        return buttonText9
+    fun pickRandomButton(): MutableState<String> {
+        return listOf(
+            buttonText1, buttonText2,
+            buttonText3, buttonText4,
+            buttonText5, buttonText6,
+            buttonText7, buttonText8, buttonText9
+        ).filter { it.value == "" }.random()
     }
 
     fun checkWin(player: String): Boolean {
