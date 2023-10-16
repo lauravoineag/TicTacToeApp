@@ -13,7 +13,8 @@ import kotlin.concurrent.schedule
 
 
 @Composable
-fun Game() {
+fun Game(playSolo:Boolean) {
+    val playingSolo: MutableState<Boolean> = remember { mutableStateOf(playSolo) }
     val buttonText1: MutableState<String> = remember { mutableStateOf("") }
     val buttonText2: MutableState<String> = remember { mutableStateOf("") }
     val buttonText3: MutableState<String> = remember { mutableStateOf("") }
@@ -61,7 +62,7 @@ fun Game() {
                 playerWin = ":( nobody won"
             } else {
                 checkPlayerTurn()
-                if (humanTurn) {
+                if (!playingSolo.value && humanTurn) {
                     val randomPick = pickRandomButton()
                     Timer().schedule(1000){
                     playerTakesTurn(randomPick, humanTurn = false)}

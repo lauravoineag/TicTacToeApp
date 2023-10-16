@@ -19,7 +19,7 @@ class TicTacToeTest {
     val rule = createComposeRule()
 
     @Before
-    fun setUp() { rule.setContent { Game() } }
+    fun setUp() { rule.setContent { Game(true) } }
 
     @Test
     fun startGame_displayText(){
