@@ -27,32 +27,48 @@ fun GridButtons(
                 onClick = { onButton1Change() }) {
                 Text(text = button1)
             }
-            Button(onClick = { onButton2Change() }) {
+            Button(
+                modifier = Modifier.testTag("Button 2"),
+                onClick = { onButton2Change() }) {
                 Text(text = button2)
             }
-            Button(onClick = { onButton3Change() }) {
+            Button(
+                modifier = Modifier.testTag("Button 3"),
+                onClick = { onButton3Change() }) {
                 Text(text = button3)
             }
         }
         Row {
-            Button(onClick = { onButton4Change() }) {
+            Button(
+                modifier = Modifier.testTag("Button 4"),
+                onClick = { onButton4Change() }) {
                 Text(text = button4)
             }
-            Button(onClick = { onButton5Change() }) {
+            Button(
+                modifier = Modifier.testTag("Button 5"),
+                onClick = { onButton5Change() }) {
                 Text(text = button5)
             }
-            Button(onClick = { onButton6Change() }) {
+            Button(
+                modifier = Modifier.testTag("Button 6"),
+                onClick = { onButton6Change() }) {
                 Text(text = button6)
             }
         }
         Row {
-            Button(onClick = { onButton7Change() }) {
+            Button(
+                modifier = Modifier.testTag("Button 7"),
+                onClick = { onButton7Change() }) {
                 Text(text = button7)
             }
-            Button(onClick = { onButton8Change() }) {
+            Button(
+                modifier = Modifier.testTag("Button 8"),
+                onClick = { onButton8Change() }) {
                 Text(text = button8)
             }
-            Button(onClick = { onButton9Change() }) {
+            Button(
+                modifier = Modifier.testTag("Button 9"),
+                onClick = { onButton9Change() }) {
                 Text(text = button9)
             }
         }
