@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import java.util.Timer
 import kotlin.concurrent.schedule
 
@@ -88,7 +89,7 @@ fun Game(playSolo:Boolean) {
             buttonText6.value, onButton6Change = { playerTakesTurn(buttonText6) },
             buttonText7.value, onButton7Change = { playerTakesTurn(buttonText7) },
             buttonText8.value, onButton8Change = { playerTakesTurn(buttonText8) },
-            buttonText9.value, onButton9Change = { playerTakesTurn(buttonText9) }
+            buttonText9.value, onButton9Change = { playerTakesTurn(buttonText9) },
         )
         StartGameButton(::startGame)
     }

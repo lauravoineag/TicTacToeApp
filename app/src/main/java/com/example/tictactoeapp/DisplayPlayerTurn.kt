@@ -18,11 +18,13 @@ fun DisplayPlayerTurn(player: String, winPlayer:String) {
     {
        Text(modifier = Modifier
            .background(Color.Yellow)
-           .padding(16.dp),
+           .padding(16.dp)
+           .weight(1f),
            text = "Player Turn: $player")
         Text(modifier = Modifier
             .background(Color.Green)
-            .padding(16.dp),
+            .padding(16.dp)
+            .weight(1f),
             text = winPlayer)
    }
 }
